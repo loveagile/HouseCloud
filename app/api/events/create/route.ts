@@ -16,13 +16,9 @@ export async function POST(req: NextRequest) {
   const { title, type, format, note, createdAt, updatedAt } = data;
 
   let queryStr =
-    "INSERT INTO events (title, createdAt, updatedAt, type, format" +
-    (note ? ", note" : "") +
-    ") ";
+    "INSERT INTO events (title, type, format" + (note ? ", note" : "") + ") ";
   queryStr += "VALUES (";
   queryStr += "'" + title + "', ";
-  queryStr += "'" + createdAt + "', ";
-  queryStr += "'" + updatedAt + "', ";
   queryStr += "'" + type + "', ";
   queryStr += "'" + format + "'";
   if (note) queryStr += ", '" + note + "'";

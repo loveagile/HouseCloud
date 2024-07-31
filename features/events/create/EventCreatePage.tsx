@@ -47,8 +47,6 @@ export default function EventCreatePage() {
       type,
       format,
       note,
-      createdAt: formattedString,
-      updatedAt: formattedString,
     });
 
     const { lastInsertedId } = res.data;
