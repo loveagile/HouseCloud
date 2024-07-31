@@ -62,12 +62,7 @@ export default function EventCreatePage() {
         イベントの作成開始
       </h1>
       <div className="bg-white w-full p-5">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSubmit(onSubmit);
-          }}
-        >
+        <form onSubmit={handleSubmit(onSubmit)}>
           {/* Event Title */}
           <div className="flex items-start mt-5">
             <div className="flex min-w-[230px] justify-end pr-5">
