@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import { types, formats } from "@/utils/constants";
 import SelectBox from "@/components/molecules/SelectBox/SelectBox";
 import MultilineField from "@/components/molecules/MultilineField/MultilineField";
-import { formatDateToJapaneseStringWithTime } from "@/utils/convert";
 import axios from "axios";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
@@ -22,6 +21,8 @@ interface IEventCreateForm {
   format?: string;
   note?: string;
 }
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function EventCreatePage() {
   const router = useRouter();
@@ -40,9 +41,8 @@ export default function EventCreatePage() {
 
   const onSubmit = async (data: IEventCreateForm) => {
     const { title, type, format, note } = data;
-    const formattedString = formatDateToJapaneseStringWithTime(new Date());
 
-    const res = await axios.post("/api/events/create", {
+    const res = await axios.post(`${BASE_URL}/api/events/create`, {
       title,
       type,
       format,
@@ -51,7 +51,7 @@ export default function EventCreatePage() {
 
     const { lastInsertedId } = res.data;
 
-    router.push(`/events/${lastInsertedId}`);
+    router.push(`${BASE_URL}/events/${lastInsertedId}`);
   };
 
   return (
@@ -172,7 +172,7 @@ export default function EventCreatePage() {
           </div>
         </form>
       </div>
-      <EditBackBtn linkUrl="/events/list" className="mt-4" />
+      <EditBackBtn linkUrl={`${BASE_URL}/events/list`} className="mt-4" />
     </div>
   );
 }
