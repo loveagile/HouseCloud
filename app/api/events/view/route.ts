@@ -13,11 +13,11 @@ export async function POST(req: NextRequest) {
   )
     queryStr += " WHERE";
 
-  if (type !== "イベント種別 - 全て") {
+  if (type && type !== "イベント種別 - 全て") {
     queryStr += " type = '" + type + "'";
     isAppend = true;
   }
-  if (status !== "ステータス - 全て") {
+  if (status && status !== "ステータス - 全て") {
     let updated_status =
       status === "公開中"
         ? "公開"

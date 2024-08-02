@@ -108,7 +108,7 @@ const menues = [
         submenues: [
           {
             label: "新着順表示",
-            link: "/reserve-events",
+            link: "/reservations/list",
           },
           {
             label: "カレンダー表示",

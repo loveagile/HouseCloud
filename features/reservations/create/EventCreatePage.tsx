@@ -73,9 +73,8 @@ export default function EventCreatePage() {
                 </p>
               )}
               <p
-                className={`text-[14px] mt-3 ${
-                  errors.title ? "text-m-red" : ""
-                }`}
+                className={`text-[14px] mt-3 ${errors.title ? "text-m-red" : ""
+                  }`}
               >
                 ※地域名をタイトルの先頭に入れると検索によるアクセス増加が見込めます。
                 <br></br>
