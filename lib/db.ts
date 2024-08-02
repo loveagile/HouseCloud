@@ -44,15 +44,24 @@ async function initializeDatabase(db: Connection) {
 `);
 
   // Create 'campaign' table if it doesn't exist
-  // await db.execute(`
-  //   CREATE TABLE IF NOT EXISTS campaign (
-  //     id INT AUTO_INCREMENT PRIMARY KEY,
-  //     title VARCHAR(255) NOT NULL,
-  //     start_date DATE NOT NULL,
-  //     end_date DATE,
-  //     budget DECIMAL(10, 2),
-  //     description TEXT,
-  //     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  //   )
-  // `);
+  await db.execute(`
+    CREATE TABLE IF NOT EXISTS campaigns (
+      id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+      title VARCHAR(255) NOT NULL,
+      type VARCHAR(255) NOT NULL,
+      format VARCHAR(255) NOT NULL,
+      status VARCHAR(255) DEFAULT '非公開(下書き)',
+      eventDate VARCHAR(255),
+      prefecture VARCHAR(255),
+      address1 VARCHAR(255),
+      address2 VARCHAR(255),
+      featuredEvent VARCHAR(255),
+      imgUrl VARCHAR(255),
+      mainImg INT DEFAULT 0,
+      article VARCHAR(1000),
+      createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+      updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP,
+      deletedAt TIMESTAMP NULL
+    )
+  `);
 }

@@ -22,8 +22,6 @@ interface IEventCreateForm {
   note?: string;
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 export default function EventCreatePage() {
   const router = useRouter();
 
@@ -42,7 +40,7 @@ export default function EventCreatePage() {
   const onSubmit = async (data: IEventCreateForm) => {
     const { title, type, format, note } = data;
 
-    const res = await axios.post(`${BASE_URL}/api/events/create`, {
+    const res = await axios.post('/api/events/create', {
       title,
       type,
       format,
@@ -51,7 +49,7 @@ export default function EventCreatePage() {
 
     const { lastInsertedId } = res.data;
 
-    router.push(`${BASE_URL}/events/${lastInsertedId}`);
+    router.push(`/events/${lastInsertedId}`);
   };
 
   return (
@@ -172,7 +170,7 @@ export default function EventCreatePage() {
           </div>
         </form>
       </div>
-      <EditBackBtn linkUrl={`${BASE_URL}/events/list`} className="mt-4" />
+      <EditBackBtn linkUrl={`/events/list`} className="mt-4" />
     </div>
   );
 }

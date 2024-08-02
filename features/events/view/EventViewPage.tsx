@@ -49,6 +49,8 @@ export default function EventViewPage() {
     setSelectedEventItems(selectedItems);
   }, [eventItems, currentPage]);
 
+  console.log(eventItems)
+
   return (
     <>
       {isLoading && <Loading />}

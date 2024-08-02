@@ -6,6 +6,7 @@ import StatusField from "@/components/molecules/StatusField/StatusField";
 import StarsRoundedIcon from "@mui/icons-material/StarsRounded";
 import { getReservationPeriod, eventDateTimeSplit } from "@/utils/convert";
 import { IEventDateTime } from "@/lib/recoil/EventDateAtom";
+import { formatISO8601TimestampToJapaneseString } from "@/utils/convert";
 import "./EventListItem.css";
 
 export interface IEventListItem {
@@ -113,7 +114,7 @@ const EventListItem: React.FC<{ values: IEventListItem }> = ({ values }) => {
             複製
           </Link>
         </div>
-        <div className="text-[11px] mt-auto">最終更新: {updatedAt}</div>
+        <div className="text-[11px] mt-auto">最終更新: {formatISO8601TimestampToJapaneseString(updatedAt)}</div>
       </div>
     </div>
   );

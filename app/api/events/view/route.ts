@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
     queryStr += " WHERE";
 
   if (type !== "イベント種別 - 全て") {
-    queryStr += " type = '" + type + " '";
+    queryStr += " type = '" + type + "'";
     isAppend = true;
   }
   if (status !== "ステータス - 全て") {
@@ -24,8 +24,8 @@ export async function POST(req: NextRequest) {
         : status === "公開中(開催終了)"
         ? "公開(開催終了)"
         : "非公開(下書き)";
-    if (isAppend) queryStr += " and ";
-    queryStr += " eventStatus = '" + updated_status + " '";
+    if (isAppend) queryStr += " and";
+    queryStr += " status = '" + updated_status + "'";
   }
 
   try {

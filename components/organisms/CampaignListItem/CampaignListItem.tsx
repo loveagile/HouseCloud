@@ -5,6 +5,7 @@ import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import { getReservationPeriod, eventDateTimeSplit } from "@/utils/convert";
 import StatusField from "@/components/molecules/StatusField/StatusField";
 import { IEventDateTime } from "@/lib/recoil/EventDateAtom";
+import { formatISO8601TimestampToJapaneseString } from "@/utils/convert";
 import "./CampaignListItem.css";
 
 export interface ICampaignListItem {
@@ -101,7 +102,7 @@ const CampaignListItem: React.FC<{ values: ICampaignListItem }> = ({
         >
           プレビュー
         </Link>
-        <div className="text-[11px] mt-auto">最終更新: {updatedAt}</div>
+        <div className="text-[11px] mt-auto">最終更新: {formatISO8601TimestampToJapaneseString(updatedAt)}</div>
       </div>
     </div>
   );

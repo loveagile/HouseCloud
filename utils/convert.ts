@@ -21,6 +21,23 @@ export const formatDateToJapaneseStringWithTime = (date: Date) => {
   return dateStr + ` ${hours}:${minutes}:${seconds}`;
 };
 
+export const formatISO8601TimestampToJapaneseString = (isoTimestamp: string) => {
+  const date = new Date(isoTimestamp);
+
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
+  const day = date.getDate().toString().padStart(2, '0');
+
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  const seconds = date.getSeconds().toString().padStart(2, '0');
+
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  const weekday = weekdays[date.getDay()];
+
+  return `${year}年${month}月${day}日(${weekday}) ${hours}:${minutes}:${seconds}`;
+}
+
 const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 export const numberOfDays = (year: number, month: number) => {

@@ -39,14 +39,11 @@ export default function CampaignCreatePage() {
 
   const onSubmit = async (data: ICampaignCreateForm) => {
     const { title, type, format } = data;
-    const formattedString = formatDateToJapaneseStringWithTime(new Date());
 
     const res = await axios.post("/api/campaigns/create", {
       title,
       type,
       format,
-      createdAt: formattedString,
-      updatedAt: formattedString,
     });
 
     const { lastInsertedId } = res.data;
